@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Politique de confidentialité – Vectria</title>
+<meta name="description" content="Politique de confidentialité des jeux Vectria : Gemblox, Tournée Générale, Arrowly et Neon Drift.">
+<link rel="icon" type="image/png" href="favicon.png">
+<style>
+/* Layout: single reading column; language switch at top; one common part then one section per game */
+:root {
+  --bg: #f5f3fb; --surface: #ffffff; --fg: #1c1733; --muted: #5d5779; --line: #e1dcf0;
+  --accent: #5b3fd6; --gold: #e89a12;
+  --font: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #110c2e; --surface: #1b1544; --fg: #f1eeff; --muted: #b6afe0; --line: #2d2566; --accent: #b6a6ff; --gold: #ffc23d; color-scheme: dark; }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.65 var(--font); }
+.wrap { max-width: 70ch; margin: 0 auto; padding: 32px max(16px, env(safe-area-inset-left)) 56px max(16px, env(safe-area-inset-right)); }
+header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 900; letter-spacing: .12em; color: var(--fg); text-decoration: none; }
+.blocks { display: grid; grid-template-columns: repeat(2, 11px); gap: 2px; }
+.blocks i { width: 11px; height: 11px; border-radius: 3px; }
+.blocks i:nth-child(1) { background: #ff4d6d } .blocks i:nth-child(2) { background: #ffd60a }
+.blocks i:nth-child(3) { background: #22d3ee } .blocks i:nth-child(4) { background: #b15cff }
+.lang { display: flex; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; }
+.lang button { border: 0; background: none; color: var(--muted); font: 700 14px var(--font); padding: 6px 14px; cursor: pointer; }
+.lang button[aria-pressed="true"] { background: var(--accent); color: var(--bg); }
+h1 { font-size: 2rem; line-height: 1.2; margin: 28px 0 4px; text-wrap: balance; }
+.date { color: var(--muted); margin: 0 0 20px; font-size: 14px; }
+h2 { font-size: 1.2rem; margin: 30px 0 8px; text-wrap: balance; }
+h3 { font-size: 1.05rem; margin: 0 0 6px; display: flex; align-items: center; gap: 10px; }
+h3 img { width: 32px; height: 32px; border-radius: 8px; }
+p, li { margin: 0 0 10px; }
+ul { padding-left: 20px; margin: 0 0 10px; }
+a { color: var(--accent); }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+.summary { border-left: 4px solid var(--gold); padding: 4px 0 4px 14px; }
+.toc { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 0; padding: 0; list-style: none; }
+.toc a { display: inline-block; border: 1px solid var(--line); border-radius: 999px; padding: 4px 12px; text-decoration: none; font-weight: 700; font-size: 14px; }
+.game { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 16px 18px 8px; margin: 12px 0; scroll-margin-top: 16px; }
+.pkg { color: var(--muted); font-size: 13px; font-weight: 400; }
+code { font-size: .92em; user-select: all; }
+[hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <a class="brand" href="./"><span class="blocks" aria-hidden="true"><i></i><i></i><i></i><i></i></span>VECTRIA</a>
+  <div class="lang" role="group" aria-label="Langue / Language">
+    <button id="b-fr" aria-pressed="true">Français</button>
+    <button id="b-en" aria-pressed="false">English</button>
+  </div>
+</header>
+
+<!-- ============================ FRANÇAIS ============================ -->
+<article id="fr" lang="fr">
+  <h1>Politique de confidentialité</h1>
+  <p class="date">Dernière mise à jour : 16 novembre 2026</p>
+  <p class="summary">Nos jeux ne vous demandent ni compte, ni e-mail, ni nom. Vos scores et réglages restent sur votre téléphone. Les jeux affichent des publicités Google AdMob, qui peuvent collecter certaines données de l'appareil, comme expliqué ci-dessous.</p>
+  <p>Cette politique s'applique aux jeux Android publiés par Vectria :</p>
+  <ul class="toc">
+    <li><a href="#gemblox" data-game="gemblox">Gemblox</a></li>
+    <li><a href="#tournee-generale" data-game="tournee-generale">Tournée Générale</a></li>
+    <li><a href="#arrowly" data-game="arrowly">Arrowly</a></li>
+    <li><a href="#neon-drift" data-game="neon-drift">Neon Drift</a></li>
+  </ul>
+
+  <h2>Qui sommes-nous</h2>
+  <p>Les jeux sont édités par Vectria, développeur indépendant. Pour toute question sur vos données : <code>vectriaa@gmail.com</code></p>
+
+  <h2>Données enregistrées sur votre appareil</h2>
+  <p>Vos scores, votre progression, la partie en cours et vos réglages (son, vibration, langue) sont enregistrés uniquement dans le stockage local du jeu, sur votre appareil. Ils ne nous sont jamais envoyés. Désinstaller le jeu les supprime.</p>
+
+  <h2>Publicité (Google AdMob)</h2>
+  <p>Nos jeux sont gratuits et financés par des publicités diffusées par Google AdMob. Pour afficher et mesurer les publicités, le SDK Google Mobile Ads peut collecter :</p>
+  <ul>
+    <li>l'identifiant publicitaire de votre appareil et des informations générales (modèle, version d'Android, langue) ;</li>
+    <li>votre localisation approximative, déduite de votre adresse IP ;</li>
+    <li>vos interactions avec les publicités et des données de diagnostic (plantages, performances).</li>
+  </ul>
+  <p>Ces données sont traitées par Google selon ses propres règles : <a href="https://policies.google.com/technologies/partner-sites?hl=fr" target="_blank" rel="noopener">Comment Google utilise les données des applications partenaires</a> et <a href="https://policies.google.com/privacy?hl=fr" target="_blank" rel="noopener">Règles de confidentialité de Google</a>.</p>
+
+  <h2>Votre consentement et vos choix</h2>
+  <ul>
+    <li>Dans l'Espace économique européen, au Royaume-Uni et en Suisse, les jeux vous demandent votre consentement avant d'afficher des publicités personnalisées. Vous pouvez modifier ce choix à tout moment dans les paramètres du jeu (rubrique confidentialité ou publicités).</li>
+    <li>Vous pouvez réinitialiser ou supprimer votre identifiant publicitaire dans les réglages de votre téléphone (Paramètres → Google → Annonces, ou Paramètres → Confidentialité → Annonces).</li>
+    <li>Regarder une publicité contre une récompense est toujours facultatif.</li>
+  </ul>
+
+  <h2>Ce qui est propre à chaque jeu</h2>
+
+  <section class="game" id="fr-gemblox">
+    <h3><img src="gemblox-icon.png" alt="">Gemblox <span class="pkg">com.vectria.gemblox</span></h3>
+    <p>Aucune donnée en plus de ce qui est décrit ci-dessus : scores et réglages en local, publicités AdMob.</p>
+  </section>
+
+  <section class="game" id="fr-tournee-generale">
+    <h3><img src="tournee-generale-icon.png" alt="">Tournée Générale <span class="pkg">fr.tourneegenerale.app</span></h3>
+    <ul>
+      <li><b>Réservé aux adultes (18 ans et plus).</b> Le jeu évoque la consommation d'alcool. À consommer avec modération.</li>
+      <li><b>Prénoms des joueurs :</b> les prénoms que vous saisissez servent uniquement à personnaliser les défis. Ils restent enregistrés sur votre téléphone et ne nous sont jamais envoyés.</li>
+      <li><b>Achat intégré :</b> l'option premium (sans publicité et contenus supplémentaires) est vendue via Google Play. Le paiement est entièrement géré par Google : nous ne recevons jamais vos coordonnées bancaires. Le jeu reçoit seulement de Google Play la confirmation que l'achat a été effectué, afin de débloquer le contenu et de pouvoir le restaurer. Voir les <a href="https://payments.google.com/payments/apis-secure/u/0/get_legal_document?ldo=0&ldt=privacynotice&ldl=fr" target="_blank" rel="noopener">règles de confidentialité de Google Payments</a>.</li>
+    </ul>
+  </section>
+
+  <section class="game" id="fr-arrowly">
+    <h3><img src="arrowly-icon.png" alt="">Arrowly <span class="pkg">com.vectria.arrowly</span></h3>
+    <p>Aucune donnée en plus de ce qui est décrit ci-dessus : progression et réglages en local, publicités AdMob.</p>
+  </section>
+
+  <section class="game" id="fr-neon-drift">
+    <h3><img src="neon-drift-icon.png" alt="">Neon Drift <span class="pkg">com.vectria.neondrift</span></h3>
+    <ul>
+      <li><b>Google Play Jeux :</b> pour les classements et les succès, le jeu utilise les services Google Play Jeux. Si vous êtes connecté, Google partage avec le jeu votre identifiant de joueur, votre pseudo et votre avatar Play Jeux, et vos scores et succès sont envoyés à Google pour être affichés. Nous ne recevons pas votre adresse e-mail. Ces données sont gérées par Google : vous pouvez les consulter et gérer votre profil dans l'application Google Play Jeux. Voir les <a href="https://policies.google.com/privacy?hl=fr" target="_blank" rel="noopener">règles de confidentialité de Google</a>.</li>
+      <li>Pièces, vaisseaux et défis du jour sont enregistrés en local sur votre appareil.</li>
+    </ul>
+  </section>
+
+  <h2>Enfants</h2>
+  <p>Nos jeux ne s'adressent pas aux enfants de moins de 13 ans, et Tournée Générale est réservé aux adultes. Nous ne collectons pas sciemment de données concernant des enfants.</p>
+
+  <h2>Partage, sécurité et suppression</h2>
+  <p>Nous ne vendons, ne louons et ne partageons aucune donnée personnelle. Les données collectées par les SDK de Google (AdMob, Google Play) sont chiffrées pendant leur transfert. Comme nos jeux n'utilisent pas de compte, nous ne détenons aucune donnée à votre sujet : désinstaller un jeu supprime toutes ses données locales. Pour toute demande, écrivez-nous à <code>vectriaa@gmail.com</code>.</p>
+
+  <h2>Modifications</h2>
+  <p>Cette politique peut évoluer, par exemple lors de la sortie d'un nouveau jeu. La date en haut de la page indique la dernière version.</p>
+</article>
+
+<!-- ============================ ENGLISH ============================ -->
+<article id="en" lang="en" hidden>
+  <h1>Privacy Policy</h1>
+  <p class="date">Last updated: November 16, 2026</p>
+  <p class="summary">Our games never ask for an account, an email or your name. Your scores and settings stay on your phone. The games show ads from Google AdMob, which may collect some device data as described below.</p>
+  <p>This policy applies to the Android games published by Vectria:</p>
+  <ul class="toc">
+    <li><a href="#gemblox" data-game="gemblox">Gemblox</a></li>
+    <li><a href="#tournee-generale" data-game="tournee-generale">Tournée Générale</a></li>
+    <li><a href="#arrowly" data-game="arrowly">Arrowly</a></li>
+    <li><a href="#neon-drift" data-game="neon-drift">Neon Drift</a></li>
+  </ul>
+
+  <h2>Who we are</h2>
+  <p>The games are published by Vectria, an independent developer. For any question about your data: <code>vectriaa@gmail.com</code></p>
+
+  <h2>Data stored on your device</h2>
+  <p>Your scores, progress, game in progress and settings (sound, vibration, language) are saved only in the game's local storage on your device. They are never sent to us. Uninstalling the game deletes them.</p>
+
+  <h2>Advertising (Google AdMob)</h2>
+  <p>Our games are free and funded by ads served by Google AdMob. To show and measure ads, the Google Mobile Ads SDK may collect:</p>
+  <ul>
+    <li>your device's advertising ID and general device information (model, Android version, language);</li>
+    <li>your approximate location, derived from your IP address;</li>
+    <li>ad interactions and diagnostic data (crashes, performance).</li>
+  </ul>
+  <p>This data is processed by Google under its own policies: <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">How Google uses information from apps that use its services</a> and <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a>.</p>
+
+  <h2>Your consent and choices</h2>
+  <ul>
+    <li>In the European Economic Area, the United Kingdom and Switzerland, the games ask for your consent before showing personalized ads. You can change your choice at any time in the game's settings (privacy or ads section).</li>
+    <li>You can reset or delete your advertising ID in your phone's settings (Settings → Google → Ads, or Settings → Privacy → Ads).</li>
+    <li>Watching an ad in exchange for a reward is always optional.</li>
+  </ul>
+
+  <h2>What is specific to each game</h2>
+
+  <section class="game" id="en-gemblox">
+    <h3><img src="gemblox-icon.png" alt="">Gemblox <span class="pkg">com.vectria.gemblox</span></h3>
+    <p>No data beyond what is described above: scores and settings stored locally, AdMob ads.</p>
+  </section>
+
+  <section class="game" id="en-tournee-generale">
+    <h3><img src="tournee-generale-icon.png" alt="">Tournée Générale <span class="pkg">fr.tourneegenerale.app</span></h3>
+    <ul>
+      <li><b>Adults only (18+).</b> The game refers to drinking alcohol. Please drink responsibly.</li>
+      <li><b>Player names:</b> the first names you enter are only used to personalize the challenges. They stay on your phone and are never sent to us.</li>
+      <li><b>In-app purchase:</b> the premium option (no ads and extra content) is sold through Google Play. Payment is handled entirely by Google: we never receive your payment details. The game only receives confirmation from Google Play that the purchase was made, so it can unlock and restore the content. See the <a href="https://payments.google.com/payments/apis-secure/u/0/get_legal_document?ldo=0&ldt=privacynotice&ldl=en" target="_blank" rel="noopener">Google Payments Privacy Notice</a>.</li>
+    </ul>
+  </section>
+
+  <section class="game" id="en-arrowly">
+    <h3><img src="arrowly-icon.png" alt="">Arrowly <span class="pkg">com.vectria.arrowly</span></h3>
+    <p>No data beyond what is described above: progress and settings stored locally, AdMob ads.</p>
+  </section>
+
+  <section class="game" id="en-neon-drift">
+    <h3><img src="neon-drift-icon.png" alt="">Neon Drift <span class="pkg">com.vectria.neondrift</span></h3>
+    <ul>
+      <li><b>Google Play Games:</b> for leaderboards and achievements, the game uses Google Play Games services. If you are signed in, Google shares your player ID, gamer name and avatar with the game, and your scores and achievements are sent to Google to be displayed. We do not receive your email address. This data is managed by Google: you can view it and manage your profile in the Google Play Games app. See the <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a>.</li>
+      <li>Coins, ships and daily challenges are stored locally on your device.</li>
+    </ul>
+  </section>
+
+  <h2>Children</h2>
+  <p>Our games are not directed at children under 13, and Tournée Générale is for adults only. We do not knowingly collect data from children.</p>
+
+  <h2>Sharing, security and deletion</h2>
+  <p>We do not sell, rent or share any personal data. Data collected by Google's SDKs (AdMob, Google Play) is encrypted in transit. Because our games do not use accounts, we hold no data about you: uninstalling a game deletes all its local data. For any request, email us at <code>vectriaa@gmail.com</code>.</p>
+
+  <h2>Changes</h2>
+  <p>We may update this policy, for example when a new game is released. The date at the top shows the latest version.</p>
+</article>
+</div>
+
+<script>
+(function () {
+  var fr = document.getElementById('fr'), en = document.getElementById('en');
+  var bFr = document.getElementById('b-fr'), bEn = document.getElementById('b-en');
+  var lang = 'fr';
+  function show(l) {
+    lang = l; fr.hidden = l !== 'fr'; en.hidden = l !== 'en';
+    bFr.setAttribute('aria-pressed', l === 'fr'); bEn.setAttribute('aria-pressed', l === 'en');
+    document.documentElement.lang = l;
+    try { localStorage.setItem('vectria_lang', l); } catch (e) {}
+  }
+  function goToGame() {
+    var h = location.hash.slice(1);
+    if (h === 'fr' || h === 'en') { show(h); return; }
+    var el = h && document.getElementById(lang + '-' + h);
+    if (el) el.scrollIntoView();
+  }
+  bFr.addEventListener('click', function () { show('fr'); goToGame(); });
+  bEn.addEventListener('click', function () { show('en'); goToGame(); });
+  var saved = null; try { saved = localStorage.getItem('vectria_lang'); } catch (e) {}
+  show(saved || ((navigator.language || 'fr').toLowerCase().indexOf('fr') === 0 ? 'fr' : 'en'));
+  window.addEventListener('hashchange', goToGame);
+  goToGame();
+})();
+</script>
+</body>
+</html>
