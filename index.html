@@ -2,116 +2,83 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Vectria – Jeux mobiles</title>
-<meta name="description" content="Vectria crée des jeux mobiles simples et colorés : Gemblox, Tournée Générale, Arrowly et Neon Drift.">
+<meta name="description" content="Vectria, studio indépendant de jeux mobiles : Gemblox, Tournée Générale, Arrowly et Neon Drift.">
+<meta name="theme-color" content="#000000">
+<meta property="og:title" content="Vectria – Jeux mobiles">
+<meta property="og:image" content="https://vectriaa-max.github.io/logo-vectria.jpg">
 <link rel="icon" type="image/png" href="favicon.png">
-<style>
-/* Layout: one centered column; studio header, then a grid of game cards (2 columns, 1 on phones) */
-:root {
-  --bg: #f5f3fb; --surface: #ffffff; --fg: #1c1733; --muted: #5d5779; --line: #e1dcf0;
-  --accent: #5b3fd6; --gold: #e89a12;
-  --font: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-}
-@media (prefers-color-scheme: dark) {
-  :root { --bg: #110c2e; --surface: #1b1544; --fg: #f1eeff; --muted: #b6afe0; --line: #2d2566; --accent: #b6a6ff; --gold: #ffc23d; color-scheme: dark; }
-}
-* { box-sizing: border-box; }
-body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.6 var(--font); }
-.wrap { max-width: 980px; margin: 0 auto; padding: 40px max(16px, env(safe-area-inset-left)) 56px max(16px, env(safe-area-inset-right)); }
-header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; }
-.brand { display: flex; align-items: center; gap: 12px; font-weight: 900; font-size: 22px; letter-spacing: .12em; }
-.blocks { display: grid; grid-template-columns: repeat(2, 13px); gap: 3px; }
-.blocks i { width: 13px; height: 13px; border-radius: 4px; }
-.blocks i:nth-child(1) { background: #ff4d6d } .blocks i:nth-child(2) { background: #ffd60a }
-.blocks i:nth-child(3) { background: #22d3ee } .blocks i:nth-child(4) { background: #b15cff }
-.lang { display: flex; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; }
-.lang button { border: 0; background: none; color: var(--muted); font: 700 14px var(--font); padding: 6px 14px; cursor: pointer; }
-.lang button[aria-pressed="true"] { background: var(--accent); color: var(--bg); }
-.intro { margin: 36px 0 28px; max-width: 60ch; }
-h1 { font-size: clamp(28px, 5vw, 40px); line-height: 1.15; margin: 0 0 10px; text-wrap: balance; }
-.intro p { color: var(--muted); margin: 0; }
-.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
-@media (max-width: 640px) { .grid { grid-template-columns: 1fr; } }
-.game { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 18px; display: grid; grid-template-columns: 72px 1fr; gap: 14px; align-items: start; }
-.game img { width: 72px; height: 72px; border-radius: 16px; }
-.game h2 { margin: 0; font-size: 20px; }
-.game .tag { display: inline-block; font-size: 12px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
-.game p { margin: 6px 0 12px; color: var(--muted); font-size: 15px; }
-.links { display: flex; flex-wrap: wrap; gap: 8px 16px; font-size: 14px; font-weight: 700; }
-a { color: var(--accent); }
-a:focus-visible, button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
-.age { color: var(--gold); }
-footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; display: flex; flex-wrap: wrap; gap: 8px 20px; }
-code { user-select: all; }
-[hidden] { display: none !important; }
-</style>
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="wrap">
-<header>
-  <div class="brand"><span class="blocks" aria-hidden="true"><i></i><i></i><i></i><i></i></span>VECTRIA</div>
+<header class="topbar">
+  <a class="brand" href="./"><img src="logo-v.png" alt=""><span>VECTRIA</span></a>
   <div class="lang" role="group" aria-label="Langue / Language">
-    <button id="b-fr" aria-pressed="true">Français</button>
-    <button id="b-en" aria-pressed="false">English</button>
+    <button id="b-fr" aria-pressed="true">FR</button>
+    <button id="b-en" aria-pressed="false">EN</button>
   </div>
 </header>
 
 <main>
-<section class="intro">
+<section class="hero">
+  <img class="hero-logo" src="logo-vectria.jpg" width="800" height="800" alt="Logo Vectria – Gaming × Trading × Beyond">
   <h1 data-fr="Des jeux mobiles simples, colorés et gratuits" data-en="Simple, colorful, free mobile games">Des jeux mobiles simples, colorés et gratuits</h1>
-  <p data-fr="Vectria est un petit studio indépendant qui crée des jeux pour Android. Tous nos jeux sont gratuits et financés par la publicité." data-en="Vectria is a small independent studio making games for Android. All our games are free and supported by ads.">Vectria est un petit studio indépendant qui crée des jeux pour Android. Tous nos jeux sont gratuits et financés par la publicité.</p>
+  <p data-fr="Vectria est un studio indépendant qui crée des jeux pour Android. Tous nos jeux sont gratuits et financés par la publicité." data-en="Vectria is an independent studio making games for Android. All our games are free and supported by ads.">Vectria est un studio indépendant qui crée des jeux pour Android. Tous nos jeux sont gratuits et financés par la publicité.</p>
 </section>
 
+<h2 class="label" data-fr="Nos jeux" data-en="Our games">Nos jeux</h2>
 <div class="grid">
   <article class="game" id="gemblox">
-    <img src="gemblox-icon.png" alt="Icône de Gemblox">
+    <img src="gemblox-icon.png" width="76" height="76" alt="Icône de Gemblox">
     <div>
       <span class="tag" data-fr="Puzzle de blocs" data-en="Block puzzle">Puzzle de blocs</span>
       <h2>Gemblox</h2>
       <p data-fr="Glisse les blocs sur la grille 8×8, complète les lignes et enchaîne les combos pour battre ton record." data-en="Drag blocks onto the 8×8 grid, clear lines and chain combos to beat your high score.">Glisse les blocs sur la grille 8×8, complète les lignes et enchaîne les combos pour battre ton record.</p>
       <div class="links">
-        <a href="https://play.google.com/store/apps/details?id=com.vectria.gemblox" target="_blank" rel="noopener">Google Play</a>
-        <a href="privacy.html#gemblox" data-fr="Confidentialité" data-en="Privacy">Confidentialité</a>
+        <a class="btn play" href="https://play.google.com/store/apps/details?id=com.vectria.gemblox" target="_blank" rel="noopener">▶ Google Play</a>
+        <a class="btn ghost" href="privacy.html#gemblox" data-fr="Confidentialité" data-en="Privacy">Confidentialité</a>
       </div>
     </div>
   </article>
 
   <article class="game" id="tournee-generale">
-    <img src="tournee-generale-icon.png" alt="Icône de Tournée Générale">
+    <img src="tournee-generale-icon.png" width="76" height="76" alt="Icône de Tournée Générale">
     <div>
       <span class="tag"><span data-fr="Jeu de soirée" data-en="Party game">Jeu de soirée</span> · <span class="age">18+</span></span>
       <h2>Tournée Générale</h2>
       <p data-fr="Le jeu de cartes pour animer vos soirées entre amis : défis, votes et fous rires. À consommer avec modération." data-en="The card game to liven up your nights with friends: challenges, votes and laughs. Please drink responsibly.">Le jeu de cartes pour animer vos soirées entre amis : défis, votes et fous rires. À consommer avec modération.</p>
       <div class="links">
-        <a href="https://play.google.com/store/apps/details?id=fr.tourneegenerale.app" target="_blank" rel="noopener">Google Play</a>
-        <a href="privacy.html#tournee-generale" data-fr="Confidentialité" data-en="Privacy">Confidentialité</a>
+        <a class="btn play" href="https://play.google.com/store/apps/details?id=fr.tourneegenerale.app" target="_blank" rel="noopener">▶ Google Play</a>
+        <a class="btn ghost" href="privacy.html#tournee-generale" data-fr="Confidentialité" data-en="Privacy">Confidentialité</a>
       </div>
     </div>
   </article>
 
   <article class="game" id="arrowly">
-    <img src="arrowly-icon.png" alt="Icône d'Arrowly">
+    <img src="arrowly-icon.png" width="76" height="76" alt="Icône d'Arrowly">
     <div>
       <span class="tag" data-fr="Puzzle de réflexion" data-en="Logic puzzle">Puzzle de réflexion</span>
       <h2>Arrowly</h2>
       <p data-fr="Touche une flèche : elle sort si rien ne bloque son chemin. Trouve le bon ordre pour vider le plateau." data-en="Tap an arrow: it slides out if nothing blocks its path. Find the right order to clear the board.">Touche une flèche : elle sort si rien ne bloque son chemin. Trouve le bon ordre pour vider le plateau.</p>
       <div class="links">
-        <a href="https://play.google.com/store/apps/details?id=com.vectria.arrowly" target="_blank" rel="noopener">Google Play</a>
-        <a href="privacy.html#arrowly" data-fr="Confidentialité" data-en="Privacy">Confidentialité</a>
+        <a class="btn play" href="https://play.google.com/store/apps/details?id=com.vectria.arrowly" target="_blank" rel="noopener">▶ Google Play</a>
+        <a class="btn ghost" href="privacy.html#arrowly" data-fr="Confidentialité" data-en="Privacy">Confidentialité</a>
       </div>
     </div>
   </article>
 
   <article class="game" id="neon-drift">
-    <img src="neon-drift-icon.png" alt="Icône de Neon Drift">
+    <img src="neon-drift-icon.png" width="76" height="76" alt="Icône de Neon Drift">
     <div>
-      <span class="tag" data-fr="Arcade" data-en="Arcade">Arcade</span>
+      <span class="tag">Arcade</span>
       <h2>Neon Drift</h2>
       <p data-fr="Pilote ton vaisseau dans un univers néon, évite les obstacles, ramasse des pièces et relève les défis du jour." data-en="Fly your ship through a neon world, dodge obstacles, collect coins and complete daily challenges.">Pilote ton vaisseau dans un univers néon, évite les obstacles, ramasse des pièces et relève les défis du jour.</p>
       <div class="links">
-        <a href="https://play.google.com/store/apps/details?id=com.vectria.neondrift" target="_blank" rel="noopener">Google Play</a>
-        <a href="privacy.html#neon-drift" data-fr="Confidentialité" data-en="Privacy">Confidentialité</a>
+        <a class="btn play" href="https://play.google.com/store/apps/details?id=com.vectria.neondrift" target="_blank" rel="noopener">▶ Google Play</a>
+        <a class="btn ghost" href="privacy.html#neon-drift" data-fr="Confidentialité" data-en="Privacy">Confidentialité</a>
       </div>
     </div>
   </article>

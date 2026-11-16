@@ -2,57 +2,21 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Politique de confidentialité – Vectria</title>
 <meta name="description" content="Politique de confidentialité des jeux Vectria : Gemblox, Tournée Générale, Arrowly et Neon Drift.">
 <link rel="icon" type="image/png" href="favicon.png">
-<style>
-/* Layout: single reading column; language switch at top; one common part then one section per game */
-:root {
-  --bg: #f5f3fb; --surface: #ffffff; --fg: #1c1733; --muted: #5d5779; --line: #e1dcf0;
-  --accent: #5b3fd6; --gold: #e89a12;
-  --font: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-}
-@media (prefers-color-scheme: dark) {
-  :root { --bg: #110c2e; --surface: #1b1544; --fg: #f1eeff; --muted: #b6afe0; --line: #2d2566; --accent: #b6a6ff; --gold: #ffc23d; color-scheme: dark; }
-}
-* { box-sizing: border-box; }
-body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.65 var(--font); }
-.wrap { max-width: 70ch; margin: 0 auto; padding: 32px max(16px, env(safe-area-inset-left)) 56px max(16px, env(safe-area-inset-right)); }
-header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
-.brand { display: flex; align-items: center; gap: 10px; font-weight: 900; letter-spacing: .12em; color: var(--fg); text-decoration: none; }
-.blocks { display: grid; grid-template-columns: repeat(2, 11px); gap: 2px; }
-.blocks i { width: 11px; height: 11px; border-radius: 3px; }
-.blocks i:nth-child(1) { background: #ff4d6d } .blocks i:nth-child(2) { background: #ffd60a }
-.blocks i:nth-child(3) { background: #22d3ee } .blocks i:nth-child(4) { background: #b15cff }
-.lang { display: flex; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; }
-.lang button { border: 0; background: none; color: var(--muted); font: 700 14px var(--font); padding: 6px 14px; cursor: pointer; }
-.lang button[aria-pressed="true"] { background: var(--accent); color: var(--bg); }
-h1 { font-size: 2rem; line-height: 1.2; margin: 28px 0 4px; text-wrap: balance; }
-.date { color: var(--muted); margin: 0 0 20px; font-size: 14px; }
-h2 { font-size: 1.2rem; margin: 30px 0 8px; text-wrap: balance; }
-h3 { font-size: 1.05rem; margin: 0 0 6px; display: flex; align-items: center; gap: 10px; }
-h3 img { width: 32px; height: 32px; border-radius: 8px; }
-p, li { margin: 0 0 10px; }
-ul { padding-left: 20px; margin: 0 0 10px; }
-a { color: var(--accent); }
-a:focus-visible, button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
-.summary { border-left: 4px solid var(--gold); padding: 4px 0 4px 14px; }
-.toc { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 0; padding: 0; list-style: none; }
-.toc a { display: inline-block; border: 1px solid var(--line); border-radius: 999px; padding: 4px 12px; text-decoration: none; font-weight: 700; font-size: 14px; }
-.game { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 16px 18px 8px; margin: 12px 0; scroll-margin-top: 16px; }
-.pkg { color: var(--muted); font-size: 13px; font-weight: 400; }
-code { font-size: .92em; user-select: all; }
-[hidden] { display: none !important; }
-</style>
+<meta name="theme-color" content="#000000">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="wrap">
-<header>
-  <a class="brand" href="./"><span class="blocks" aria-hidden="true"><i></i><i></i><i></i><i></i></span>VECTRIA</a>
+<div class="wrap narrow doc">
+<header class="topbar">
+  <a class="brand" href="./"><img src="logo-v.png" alt=""><span>VECTRIA</span></a>
   <div class="lang" role="group" aria-label="Langue / Language">
-    <button id="b-fr" aria-pressed="true">Français</button>
-    <button id="b-en" aria-pressed="false">English</button>
+    <button id="b-fr" aria-pressed="true">FR</button>
+    <button id="b-en" aria-pressed="false">EN</button>
   </div>
 </header>
 
@@ -94,12 +58,12 @@ code { font-size: .92em; user-select: all; }
   <h2>Ce qui est propre à chaque jeu</h2>
 
   <section class="game" id="fr-gemblox">
-    <h3><img src="gemblox-icon.png" alt="">Gemblox <span class="pkg">com.vectria.gemblox</span></h3>
+    <h3><img width="34" height="34" src="gemblox-icon.png" alt="">Gemblox <span class="pkg">com.vectria.gemblox</span></h3>
     <p>Aucune donnée en plus de ce qui est décrit ci-dessus : scores et réglages en local, publicités AdMob.</p>
   </section>
 
   <section class="game" id="fr-tournee-generale">
-    <h3><img src="tournee-generale-icon.png" alt="">Tournée Générale <span class="pkg">fr.tourneegenerale.app</span></h3>
+    <h3><img width="34" height="34" src="tournee-generale-icon.png" alt="">Tournée Générale <span class="pkg">fr.tourneegenerale.app</span></h3>
     <ul>
       <li><b>Réservé aux adultes (18 ans et plus).</b> Le jeu évoque la consommation d'alcool. À consommer avec modération.</li>
       <li><b>Prénoms des joueurs :</b> les prénoms que vous saisissez servent uniquement à personnaliser les défis. Ils restent enregistrés sur votre téléphone et ne nous sont jamais envoyés.</li>
@@ -108,12 +72,12 @@ code { font-size: .92em; user-select: all; }
   </section>
 
   <section class="game" id="fr-arrowly">
-    <h3><img src="arrowly-icon.png" alt="">Arrowly <span class="pkg">com.vectria.arrowly</span></h3>
+    <h3><img width="34" height="34" src="arrowly-icon.png" alt="">Arrowly <span class="pkg">com.vectria.arrowly</span></h3>
     <p>Aucune donnée en plus de ce qui est décrit ci-dessus : progression et réglages en local, publicités AdMob.</p>
   </section>
 
   <section class="game" id="fr-neon-drift">
-    <h3><img src="neon-drift-icon.png" alt="">Neon Drift <span class="pkg">com.vectria.neondrift</span></h3>
+    <h3><img width="34" height="34" src="neon-drift-icon.png" alt="">Neon Drift <span class="pkg">com.vectria.neondrift</span></h3>
     <ul>
       <li><b>Google Play Jeux :</b> pour les classements et les succès, le jeu utilise les services Google Play Jeux. Si vous êtes connecté, Google partage avec le jeu votre identifiant de joueur, votre pseudo et votre avatar Play Jeux, et vos scores et succès sont envoyés à Google pour être affichés. Nous ne recevons pas votre adresse e-mail. Ces données sont gérées par Google : vous pouvez les consulter et gérer votre profil dans l'application Google Play Jeux. Voir les <a href="https://policies.google.com/privacy?hl=fr" target="_blank" rel="noopener">règles de confidentialité de Google</a>.</li>
       <li>Pièces, vaisseaux et défis du jour sont enregistrés en local sur votre appareil.</li>
@@ -168,12 +132,12 @@ code { font-size: .92em; user-select: all; }
   <h2>What is specific to each game</h2>
 
   <section class="game" id="en-gemblox">
-    <h3><img src="gemblox-icon.png" alt="">Gemblox <span class="pkg">com.vectria.gemblox</span></h3>
+    <h3><img width="34" height="34" src="gemblox-icon.png" alt="">Gemblox <span class="pkg">com.vectria.gemblox</span></h3>
     <p>No data beyond what is described above: scores and settings stored locally, AdMob ads.</p>
   </section>
 
   <section class="game" id="en-tournee-generale">
-    <h3><img src="tournee-generale-icon.png" alt="">Tournée Générale <span class="pkg">fr.tourneegenerale.app</span></h3>
+    <h3><img width="34" height="34" src="tournee-generale-icon.png" alt="">Tournée Générale <span class="pkg">fr.tourneegenerale.app</span></h3>
     <ul>
       <li><b>Adults only (18+).</b> The game refers to drinking alcohol. Please drink responsibly.</li>
       <li><b>Player names:</b> the first names you enter are only used to personalize the challenges. They stay on your phone and are never sent to us.</li>
@@ -182,12 +146,12 @@ code { font-size: .92em; user-select: all; }
   </section>
 
   <section class="game" id="en-arrowly">
-    <h3><img src="arrowly-icon.png" alt="">Arrowly <span class="pkg">com.vectria.arrowly</span></h3>
+    <h3><img width="34" height="34" src="arrowly-icon.png" alt="">Arrowly <span class="pkg">com.vectria.arrowly</span></h3>
     <p>No data beyond what is described above: progress and settings stored locally, AdMob ads.</p>
   </section>
 
   <section class="game" id="en-neon-drift">
-    <h3><img src="neon-drift-icon.png" alt="">Neon Drift <span class="pkg">com.vectria.neondrift</span></h3>
+    <h3><img width="34" height="34" src="neon-drift-icon.png" alt="">Neon Drift <span class="pkg">com.vectria.neondrift</span></h3>
     <ul>
       <li><b>Google Play Games:</b> for leaderboards and achievements, the game uses Google Play Games services. If you are signed in, Google shares your player ID, gamer name and avatar with the game, and your scores and achievements are sent to Google to be displayed. We do not receive your email address. This data is managed by Google: you can view it and manage your profile in the Google Play Games app. See the <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a>.</li>
       <li>Coins, ships and daily challenges are stored locally on your device.</li>
@@ -203,6 +167,10 @@ code { font-size: .92em; user-select: all; }
   <h2>Changes</h2>
   <p>We may update this policy, for example when a new game is released. The date at the top shows the latest version.</p>
 </article>
+<footer>
+  <span>© 2026 Vectria</span>
+  <a href="./">vectriaa-max.github.io</a>
+</footer>
 </div>
 
 <script>

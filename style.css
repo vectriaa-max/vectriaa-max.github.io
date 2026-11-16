@@ -1,0 +1,119 @@
+/* =====================================================================
+   VECTRIA – neon style, built from the brand logo
+   Layout: black page, logo hero, glass cards with neon gradient edges
+   ===================================================================== */
+@font-face { font-family: "Orbitron"; font-weight: 700; font-display: swap; src: url("fonts/orbitron-latin-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Orbitron"; font-weight: 900; font-display: swap; src: url("fonts/orbitron-latin-900-normal.woff2") format("woff2"); }
+@font-face { font-family: "Exo 2"; font-weight: 400; font-display: swap; src: url("fonts/exo-2-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Exo 2"; font-weight: 600; font-display: swap; src: url("fonts/exo-2-latin-600-normal.woff2") format("woff2"); }
+@font-face { font-family: "Exo 2"; font-weight: 700; font-display: swap; src: url("fonts/exo-2-latin-700-normal.woff2") format("woff2"); }
+
+:root {
+  color-scheme: dark;
+  --bg: #000000;
+  --surface: rgba(16, 13, 40, .72);
+  --surface-solid: #0d0b22;
+  --fg: #eef0ff;
+  --muted: #a7a3d4;
+  --line: rgba(140, 120, 255, .22);
+  --blue: #3d8bff;
+  --violet: #8b5cff;
+  --pink: #e04dff;
+  --neon: linear-gradient(90deg, var(--blue), var(--violet) 50%, var(--pink));
+  --display: "Orbitron", "Segoe UI", system-ui, sans-serif;
+  --body: "Exo 2", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html { background: var(--bg); }
+body {
+  margin: 0; color: var(--fg); font: 17px/1.6 var(--body);
+  background:
+    radial-gradient(60% 40% at 50% 100%, rgba(139, 92, 255, .16), transparent 70%),
+    radial-gradient(50% 35% at 15% 55%, rgba(61, 139, 255, .10), transparent 70%),
+    radial-gradient(50% 35% at 85% 60%, rgba(224, 77, 255, .10), transparent 70%),
+    var(--bg);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+a { color: #9fb8ff; text-underline-offset: 3px; }
+a:hover { color: #e3a6ff; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--pink); outline-offset: 3px; border-radius: 6px; }
+code { font-size: .92em; user-select: all; color: #d9d3ff; }
+[hidden] { display: none !important; }
+
+.wrap { max-width: 1040px; margin: 0 auto; padding-block: 20px 56px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.wrap.narrow { max-width: 760px; }
+
+/* ---------- Top bar ---------- */
+.topbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--fg); }
+.brand img { width: 40px; height: 40px; border-radius: 10px; }
+.brand span { font: 900 18px var(--display); letter-spacing: .14em;
+  background: linear-gradient(#ffffff, #c9c4e8); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.lang { display: flex; padding: 3px; border-radius: 999px; background: var(--surface-solid); border: 1px solid var(--line); }
+.lang button { border: 0; background: none; color: var(--muted); font: 700 13px var(--body); letter-spacing: .04em;
+  padding: 6px 14px; border-radius: 999px; cursor: pointer; }
+.lang button[aria-pressed="true"] { background: var(--neon); color: #fff; box-shadow: 0 0 14px rgba(139, 92, 255, .55); }
+
+/* ---------- Hero (home) ---------- */
+.hero { text-align: center; margin: 8px auto 36px; }
+.hero-logo { display: block; width: min(440px, 88vw); height: auto; margin: 0 auto; }
+.hero h1 { font: 700 clamp(18px, 3.2vw, 24px)/1.35 var(--display); letter-spacing: .06em; margin: 6px auto 10px; max-width: 30ch; text-wrap: balance; }
+.hero p { color: var(--muted); margin: 0 auto; max-width: 56ch; }
+
+/* ---------- Section label ---------- */
+.label { display: flex; align-items: center; gap: 14px; margin: 0 0 18px; font: 700 13px var(--display); letter-spacing: .3em; text-transform: uppercase; color: var(--muted); }
+.label::before, .label::after { content: ""; flex: 1; height: 1px; background: var(--neon); opacity: .5; }
+
+/* ---------- Game cards ---------- */
+.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+@media (max-width: 680px) { .grid { grid-template-columns: 1fr; } }
+.game {
+  position: relative; display: grid; grid-template-columns: 76px minmax(0, 1fr); gap: 16px; align-items: start;
+  padding: 18px; border-radius: 20px; background: var(--surface);
+  border: 1px solid var(--line);
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.game:hover { transform: translateY(-3px); border-color: rgba(190, 120, 255, .6);
+  box-shadow: 0 0 0 1px rgba(139, 92, 255, .35), 0 12px 40px rgba(110, 70, 255, .28); }
+.game img { width: 76px; height: 76px; border-radius: 18px; box-shadow: 0 6px 18px rgba(0, 0, 0, .5); }
+.game h2 { margin: 2px 0 0; font: 900 19px var(--display); letter-spacing: .04em; }
+.tag { font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #8fb0ff; }
+.age { color: #ff9be9; }
+.game p { margin: 6px 0 14px; color: var(--muted); font-size: 15px; }
+.links { display: flex; flex-wrap: wrap; gap: 10px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 999px;
+  font: 700 13px var(--body); letter-spacing: .03em; text-decoration: none; color: #fff;
+}
+.btn.play { background: var(--neon); box-shadow: 0 0 16px rgba(139, 92, 255, .45); }
+.btn.play:hover { color: #fff; filter: brightness(1.12); }
+.btn.ghost { border: 1px solid var(--line); color: var(--fg); background: rgba(255, 255, 255, .03); }
+.btn.ghost:hover { border-color: var(--pink); color: #fff; }
+
+/* ---------- Footer ---------- */
+footer { margin-top: 44px; padding-top: 20px; color: var(--muted); font-size: 14px;
+  display: flex; flex-wrap: wrap; gap: 8px 22px; justify-content: center; position: relative; }
+footer::before { content: ""; position: absolute; top: 0; left: 10%; right: 10%; height: 1px; background: var(--neon); opacity: .45; }
+
+/* ---------- Privacy page ---------- */
+.doc h1 { font: 900 clamp(24px, 4.5vw, 34px)/1.2 var(--display); letter-spacing: .03em; margin: 30px 0 4px; text-wrap: balance;
+  background: linear-gradient(90deg, #ffffff, #d7c9ff 60%, #f1b6ff); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.doc .date { color: var(--muted); margin: 0 0 20px; font-size: 14px; }
+.doc h2 { font: 700 17px var(--display); letter-spacing: .05em; margin: 32px 0 10px; color: #c8bfff; text-wrap: balance; }
+.doc p, .doc li { margin: 0 0 10px; }
+.doc ul { padding-left: 20px; margin: 0 0 10px; }
+.summary { border-left: 3px solid var(--pink); padding: 6px 0 6px 16px; background: linear-gradient(90deg, rgba(224, 77, 255, .08), transparent); border-radius: 0 10px 10px 0; }
+.toc { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 0; padding: 0 !important; list-style: none; }
+.toc li { margin: 0; }
+.toc a { display: inline-block; border: 1px solid var(--line); border-radius: 999px; padding: 5px 13px; text-decoration: none; font-weight: 700; font-size: 14px; color: var(--fg); background: rgba(255, 255, 255, .03); }
+.toc a:hover { border-color: var(--pink); }
+.doc .game { display: block; padding: 16px 18px 8px; margin: 12px 0; scroll-margin-top: 16px; }
+.doc .game:hover { transform: none; }
+.doc h3 { font: 900 16px var(--display); letter-spacing: .04em; margin: 0 0 8px; display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.doc h3 img { width: 34px; height: 34px; border-radius: 9px; box-shadow: none; }
+.pkg { font: 400 13px var(--body); color: var(--muted); letter-spacing: 0; }
+
+@media (prefers-reduced-motion: reduce) { .game { transition: none; } .game:hover { transform: none; } }
