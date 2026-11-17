@@ -82,6 +82,7 @@ code { font-size: .92em; user-select: all; color: #d9d3ff; }
 .game h2 { margin: 2px 0 0; font: 900 19px var(--display); letter-spacing: .04em; }
 .tag { font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #8fb0ff; }
 .age { color: #ff9be9; }
+.langs { font-size: 12px; font-weight: 700; letter-spacing: .12em; color: #8fb0ff; margin: -6px 0 12px; }
 .game p { margin: 6px 0 14px; color: var(--muted); font-size: 15px; }
 .links { display: flex; flex-wrap: wrap; gap: 10px; }
 .btn {
