@@ -10,10 +10,10 @@ window.VECTRIA = {
      Paste the full link between the quotes to show a network.
      Leave '' (empty) and the card shows "Bientôt / Coming soon". */
   social: {
-    tiktok:    '',
-    instagram: '',
-    youtube:   '',
-    discord:   '',
+    tiktok:    'https://www.tiktok.com/@ton-compte',
+  instagram: 'https://www.instagram.com/ton-compte',
+  youtube:   'https://www.youtube.com/@ta-chaine',
+  discord:   'https://discord.gg/ton-invitation',
   },
 
   contact: 'vectriaa@gmail.com',
