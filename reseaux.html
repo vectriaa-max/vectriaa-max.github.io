@@ -15,7 +15,7 @@
 <main class="wrap">
   <div class="page-title">
     <h1 data-fr="Réseaux sociaux" data-en="Social networks">Réseaux sociaux</h1>
-    <p data-fr="Coulisses, nouveaux jeux, mises à jour et concours : suis Vectria là où tu es." data-en="Behind the scenes, new games, updates and contests: follow Vectria wherever you are.">Coulisses, nouveaux jeux, mises à jour et concours : suis Vectria là où tu es.</p>
+    <p data-fr="Coulisses, nouveaux jeux, mises à jour et concours : suis-nous là où tu es." data-en="Behind the scenes, new games, updates and contests: follow us wherever you are.">Coulisses, nouveaux jeux, mises à jour et concours : suis-nous là où tu es.</p>
   </div>
   <div class="social-grid" id="social"></div>
   <p style="text-align:center;color:var(--muted)"><span data-fr="Tu peux aussi nous écrire :" data-en="You can also email us:">Tu peux aussi nous écrire :</span> <code id="mail"></code></p>
@@ -43,11 +43,20 @@
   Site.onLang(function () {
     document.getElementById('social').innerHTML = NETS.map(function (n) {
       var url = V.social[n.key];
-      var inner = '<span class="logo" style="background:' + n.bg + '">' + ICON[n.icon] + '</span>' +
+      // official logo if icons/<network>.png exists, generic icon otherwise
+      var inner = '<span class="logo" data-key="' + n.key + '" style="background:' + n.bg + '"><img class="brand-logo" src="icons/' + n.key + '.png" alt="' + n.name + '"></span>' +
         '<span><h3>' + n.name + '</h3><p>' + S.esc(S.L(n.d)) + '</p></span>' +
         (url ? '<span class="btn play">' + (S.lang === 'fr' ? 'Suivre' : 'Follow') + ' →</span>' : '<span class="soon">' + (S.lang === 'fr' ? 'Bientôt' : 'Coming soon') + '</span>');
       return url ? '<a class="panel soc" href="' + S.esc(url) + '" target="_blank" rel="noopener">' + inner + '</a>' : '<div class="panel soc off">' + inner + '</div>';
     }).join('');
+    document.querySelectorAll('#social .brand-logo').forEach(function (img) {
+      var box = img.parentNode, key = box.getAttribute('data-key');
+      var net = NETS.filter(function (x) { return x.key === key; })[0];
+      function fallback() { box.innerHTML = ICON[net.icon]; }
+      img.addEventListener('load', function () { box.classList.add('has-logo'); });
+      img.addEventListener('error', fallback);
+      if (img.complete && !img.naturalWidth) fallback();
+    });
   });
 })();
 </script>

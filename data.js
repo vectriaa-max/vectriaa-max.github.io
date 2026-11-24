@@ -36,7 +36,7 @@ window.VECTRIA = {
       ads: { fr: 'Bannière, pubs entre deux parties (jamais pendant les 2 premières), vidéos facultatives pour continuer, avoir de nouvelles pièces ou débloquer un fond.', en: 'Banner, ads between games (never during the first 2), optional videos to continue, get new pieces or unlock a background.' },
       purchases: null,
       extra: null,
-      permissions: ['internet', 'vibrate', 'adid'],
+      localData: { fr: 'ton meilleur score, la partie en cours, les fonds débloqués et tes réglages (son, vibration, langue)', en: 'your best score, the game in progress, unlocked backgrounds and your settings (sound, vibration, language)' },
     },
     {
       id: 'tournee-generale', name: 'Tournée Générale', icon: 'tournee-generale-icon.png', status: 'test',
@@ -50,10 +50,10 @@ window.VECTRIA = {
         fr: ['Défis classiques, hasard, rapides & réflexes, débats & votes', 'Les prénoms des joueurs apparaissent dans les défis', 'Mode osé : 30 min gratuites avec une vidéo, ou à vie avec l’option premium', 'Chacun peut refuser un défi, une gorgée peut toujours être de l’eau'],
         en: ['Classic, random, quick & reflex, debate & vote challenges', 'Player names appear in the challenges', 'Daring mode: 30 free minutes with a video, or forever with premium', 'Anyone can skip a challenge, a sip can always be water'],
       },
-      ads: { fr: 'Pubs AdMob, vidéo facultative pour débloquer le mode osé 30 minutes. Aucune pub avec l’option premium.', en: 'AdMob ads, optional video to unlock daring mode for 30 minutes. No ads with premium.' },
-      purchases: { fr: 'Option premium à paiement unique (sans pub + mode osé à vie), via Google Play. Le paiement est géré par Google : Vectria ne voit jamais tes coordonnées bancaires.', en: 'One-time premium option (no ads + daring mode forever) through Google Play. Payment is handled by Google: Vectria never sees your payment details.' },
+      ads: { fr: 'Des pubs pendant le jeu, et une vidéo facultative pour débloquer le mode osé pendant 30 minutes. Aucune pub avec l’option premium.', en: 'Ads during play, plus an optional video to unlock daring mode for 30 minutes. No ads with premium.' },
+      purchases: { fr: 'Option premium à paiement unique (sans pub + mode osé à vie), via Google Play. Le paiement est géré par Google Play : nous ne voyons jamais tes coordonnées bancaires.', en: 'One-time premium option (no ads + daring mode forever) through Google Play. Payment is handled by Google Play: we never see your payment details.' },
       extra: { fr: 'Les prénoms saisis restent sur ton téléphone.', en: 'The names you enter stay on your phone.' },
-      permissions: ['internet', 'vibrate', 'adid', 'billing'],
+      localData: { fr: 'les prénoms des joueurs, l’ambiance choisie, ta langue et l’état de ton option premium', en: 'player names, the chosen mood, your language and your premium status' },
     },
     {
       id: 'fletchy', name: 'Fletchy', icon: 'fletchy-icon.png', status: 'test',
@@ -67,10 +67,10 @@ window.VECTRIA = {
         fr: ['Des niveaux de plus en plus difficiles', 'Une flèche bloquée coûte une vie', 'Indices pour montrer une flèche qui peut sortir', 'Mode Méga hard et fonds collector'],
         en: ['Levels that get harder and harder', 'A blocked arrow costs a life', 'Hints show an arrow that can slide out', 'Mega hard mode and collector backgrounds'],
       },
-      ads: { fr: 'Pubs AdMob, vidéos facultatives, par exemple pour doubler une récompense.', en: 'AdMob ads, optional videos, for example to double a reward.' },
+      ads: { fr: 'Des pubs pendant le jeu, et des vidéos facultatives, par exemple pour doubler une récompense.', en: 'Ads during play, plus optional videos, for example to double a reward.' },
       purchases: null,
       extra: null,
-      permissions: ['internet', 'adid'],
+      localData: { fr: 'ta progression dans les niveaux, tes fonds collector et tes réglages', en: 'your level progress, collector backgrounds and settings' },
     },
     {
       id: 'neon-drift', name: 'Neon Drift', icon: 'neon-drift-icon.png', status: 'test',
@@ -84,10 +84,11 @@ window.VECTRIA = {
         fr: ['Touche à gauche ou à droite pour piloter', 'Hangar de vaisseaux à débloquer avec tes pièces', '3 défis du jour et un coffre bonus', 'Classement et succès Google Play Jeux'],
         en: ['Tap left or right to steer', 'Hangar of ships to unlock with your coins', '3 daily challenges and a bonus chest', 'Google Play Games leaderboard and achievements'],
       },
-      ads: { fr: 'Pubs AdMob, vidéos facultatives pour continuer après un crash ou doubler tes pièces.', en: 'AdMob ads, optional videos to continue after a crash or double your coins.' },
+      ads: { fr: 'Des pubs pendant le jeu, et des vidéos facultatives pour continuer après un crash ou doubler tes pièces.', en: 'Ads during play, plus optional videos to continue after a crash or double your coins.' },
       purchases: null,
       extra: { fr: 'Si tu te connectes à Google Play Jeux, ton pseudo, ton avatar et tes scores sont partagés avec Google pour le classement.', en: 'If you sign in to Google Play Games, your gamer name, avatar and scores are shared with Google for the leaderboard.' },
-      permissions: ['internet', 'vibrate', 'adid', 'games'],
+      playGames: true,
+      localData: { fr: 'ton record, tes pièces, tes vaisseaux, tes défis du jour et tes réglages', en: 'your best score, coins, ships, daily challenges and settings' },
     },
   ],
 
@@ -96,7 +97,7 @@ window.VECTRIA = {
   news: [
     {
       date: '2026-11-24', type: 'studio',
-      title: { fr: 'Le site Vectria fait peau neuve', en: 'The Vectria website gets a new look' },
+      title: { fr: 'Notre site fait peau neuve', en: 'Our website gets a new look' },
       text: { fr: 'Fiches info pour chaque jeu, actualités, présentation du studio et réseaux sociaux : tout est maintenant au même endroit.', en: 'An info sheet for each game, news, studio presentation and social networks: everything is now in one place.' },
     },
     {

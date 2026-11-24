@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Fiches jeux – Vectria</title>
-<meta name="description" content="Fiche info de chaque jeu Vectria : description, publicités, sécurité des données et confidentialité.">
+<meta name="description" content="Fiche info de chacun de nos jeux : description, publicités, sécurité des données et confidentialité.">
 <meta name="theme-color" content="#000000">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -15,7 +15,7 @@
 <main class="wrap">
   <div class="page-title">
     <h1 data-fr="Fiches info jeux" data-en="Game info sheets">Fiches info jeux</h1>
-    <p data-fr="Choisis un jeu : description, publicités, sécurité de tes données et confidentialité, tout est expliqué simplement." data-en="Pick a game: description, ads, data security and privacy, all explained simply.">Choisis un jeu : description, publicités, sécurité de tes données et confidentialité, tout est expliqué simplement.</p>
+    <p data-fr="Choisis un jeu : sa description, ses publicités, la sécurité de tes données et ses règles de confidentialité." data-en="Pick a game: its description, ads, data security and privacy rules.">Choisis un jeu : sa description, ses publicités, la sécurité de tes données et ses règles de confidentialité.</p>
   </div>
 
   <div class="picker" id="picker" role="group" aria-label="Jeux / Games"></div>
@@ -27,42 +27,59 @@
 <script>
 (function () {
   var V = window.VECTRIA, S = window.Site, L = S.L, esc = S.esc;
+  var BASE = 'https://vectriaa-max.github.io/privacy.html';
   var T = {
-    status: { fr: 'Statut', en: 'Status' }, version: { fr: 'Version', en: 'Version' }, age: { fr: 'Âge', en: 'Age' }, langs: { fr: 'Langues', en: 'Languages' },
+    version: { fr: 'Version', en: 'Version' }, age: { fr: 'Âge', en: 'Age' }, langs: { fr: 'Langues', en: 'Languages' },
     about: { fr: 'Le jeu', en: 'The game' }, money: { fr: 'Publicités & achats', en: 'Ads & purchases' },
-    safety: { fr: 'Sécurité des données', en: 'Data security' }, perms: { fr: 'Autorisations', en: 'Permissions' },
-    privacy: { fr: 'Confidentialité', en: 'Privacy' },
+    safety: { fr: 'Sécurité des données', en: 'Data security' },
+    rules: { fr: 'Confidentialité & règles de sécurité', en: 'Privacy & safety rules' },
     ads: { fr: 'Publicités', en: 'Ads' }, buy: { fr: 'Achats intégrés', en: 'In-app purchases' }, noBuy: { fr: 'Aucun achat intégré : le jeu est entièrement gratuit.', en: 'No in-app purchases: the game is completely free.' },
     account: { fr: 'Compte à créer', en: 'Account required' }, collected: { fr: 'Données collectées', en: 'Data collected' },
     shared: { fr: 'Partagées avec', en: 'Shared with' }, sold: { fr: 'Données vendues', en: 'Data sold' }, enc: { fr: 'Chiffrées en transit', en: 'Encrypted in transit' },
     del: { fr: 'Suppression', en: 'Deletion' }, no: { fr: 'Non', en: 'No' }, yes: { fr: 'Oui', en: 'Yes' },
-    byAds: { fr: 'Par la pub', en: 'By ads' }, google: { fr: 'Google', en: 'Google' }, uninstall: { fr: 'Désinstaller le jeu', en: 'Uninstall the game' },
-    collectedList: { fr: 'Identifiant publicitaire, infos de l’appareil, localisation approximative (adresse IP) et diagnostics, collectés par Google AdMob pour afficher et mesurer les publicités.',
-                     en: 'Advertising ID, device info, approximate location (IP address) and diagnostics, collected by Google AdMob to show and measure ads.' },
-    local: { fr: 'Tes scores, ta progression et tes réglages restent sur ton téléphone. Vectria ne les reçoit jamais.', en: 'Your scores, progress and settings stay on your phone. Vectria never receives them.' },
-    consent: { fr: 'En Europe, le jeu te demande ton accord avant les pubs personnalisées. Tu peux changer d’avis dans les paramètres du jeu.', en: 'In Europe, the game asks for your consent before personalized ads. You can change your mind in the game settings.' },
-    fullPolicy: { fr: 'Politique de confidentialité complète', en: 'Full privacy policy' },
+    byAds: { fr: 'Pour la pub', en: 'For ads' }, uninstall: { fr: 'Désinstaller le jeu', en: 'Uninstall the game' },
+    partner: { fr: 'Partenaire publicitaire', en: 'Advertising partner' },
+    officialPage: { fr: 'Page officielle des règles de ce jeu :', en: 'Official rules page for this game:' },
     play: { fr: 'Google Play', en: 'Google Play' }, soon: { fr: 'Bientôt sur Google Play', en: 'Coming soon to Google Play' },
     langsVal: { fr: 'FR · EN · ES · PT', en: 'FR · EN · ES · PT' },
-  };
-  var PERMS = {
-    internet: { n: { fr: 'Internet', en: 'Internet' }, d: { fr: 'Pour charger les publicités.', en: 'To load ads.' } },
-    vibrate: { n: { fr: 'Vibration', en: 'Vibration' }, d: { fr: 'Pour les vibrations du jeu (désactivables).', en: 'For in-game vibrations (can be turned off).' } },
-    adid: { n: { fr: 'Identifiant publicitaire', en: 'Advertising ID' }, d: { fr: 'Utilisé par AdMob, réinitialisable dans les réglages Android.', en: 'Used by AdMob, can be reset in Android settings.' } },
-    billing: { n: { fr: 'Achats Google Play', en: 'Google Play billing' }, d: { fr: 'Pour l’option premium, payée via Google Play.', en: 'For the premium option, paid through Google Play.' } },
-    games: { n: { fr: 'Google Play Jeux', en: 'Google Play Games' }, d: { fr: 'Pour le classement et les succès, si tu te connectes.', en: 'For the leaderboard and achievements, if you sign in.' } },
   };
   var current = null;
 
   function sharedWith(g) {
-    var w = [S.L({ fr: 'Google (publicité)', en: 'Google (ads)' })];
-    if (g.permissions.indexOf('games') >= 0) w.push(S.L({ fr: 'Google Play Jeux', en: 'Google Play Games' }));
-    if (g.purchases) w.push(S.L({ fr: 'Google Play (paiement)', en: 'Google Play (payment)' }));
+    var w = [L(T.partner)];
+    if (g.playGames) w.push('Google Play Jeux');
+    if (g.purchases) w.push(L({ fr: 'Google Play (paiement)', en: 'Google Play (payment)' }));
     return w.join(', ');
+  }
+
+  // Full safety rules for one game, written for players (no technical detail)
+  function rules(g) {
+    var fr = S.lang === 'fr', r = [];
+    r.push(fr ? '<b>Aucun compte.</b> ' + g.name + ' ne te demande ni nom, ni adresse e-mail, ni mot de passe.'
+              : '<b>No account.</b> ' + g.name + ' never asks for your name, email address or password.');
+    r.push(fr ? '<b>Tes données restent chez toi.</b> Sur ton téléphone uniquement : ' + esc(L(g.localData)) + '. Nos équipes ne les reçoivent jamais.'
+              : '<b>Your data stays with you.</b> On your phone only: ' + esc(L(g.localData)) + '. Our team never receives it.');
+    r.push(fr ? '<b>Publicité.</b> Pour afficher et mesurer les publicités, notre partenaire publicitaire utilise l’identifiant publicitaire de ton téléphone, des informations générales sur l’appareil et une localisation approximative. Ces données sont chiffrées pendant leur transfert et ne sont jamais vendues.'
+              : '<b>Ads.</b> To show and measure ads, our advertising partner uses your phone’s advertising ID, general device information and an approximate location. This data is encrypted in transit and never sold.');
+    r.push(fr ? '<b>Ton choix.</b> En Europe, le jeu te demande ton accord avant d’afficher des publicités personnalisées, et tu peux changer d’avis à tout moment dans ses paramètres. Les vidéos récompensées sont toujours facultatives.'
+              : '<b>Your choice.</b> In Europe, the game asks for your consent before showing personalized ads, and you can change your mind at any time in its settings. Reward videos are always optional.');
+    if (g.purchases) r.push(fr ? '<b>Achats.</b> Le paiement passe uniquement par Google Play : nous ne voyons jamais tes coordonnées bancaires. Le jeu reçoit seulement la confirmation de l’achat pour débloquer l’option.'
+              : '<b>Purchases.</b> Payment goes only through Google Play: we never see your payment details. The game only receives the purchase confirmation to unlock the option.');
+    if (g.playGames) r.push(fr ? '<b>Classement.</b> Si tu te connectes à Google Play Jeux, ton pseudo, ton avatar et tes scores sont partagés avec Google Play Jeux pour afficher le classement et les succès. La connexion est facultative.'
+              : '<b>Leaderboard.</b> If you sign in to Google Play Games, your gamer name, avatar and scores are shared with Google Play Games to show the leaderboard and achievements. Signing in is optional.');
+    r.push(g.age === '18+'
+      ? (fr ? '<b>Âge.</b> Réservé aux adultes (18 ans et plus). Le jeu évoque l’alcool : à consommer avec modération, chacun peut refuser un défi.'
+            : '<b>Age.</b> Adults only (18+). The game refers to alcohol: please drink responsibly, anyone can skip a challenge.')
+      : (fr ? '<b>Âge.</b> Le jeu s’adresse aux joueurs de 13 ans et plus. Nous ne collectons pas sciemment de données sur les enfants.'
+            : '<b>Age.</b> The game is for players aged 13 and over. We do not knowingly collect data about children.'));
+    r.push(fr ? '<b>Tes droits.</b> Désinstaller le jeu efface toutes ses données. Tu peux réinitialiser ton identifiant publicitaire dans les réglages de ton téléphone, et nous écrire pour toute question : <code>' + esc(V.contact) + '</code>.'
+              : '<b>Your rights.</b> Uninstalling the game erases all its data. You can reset your advertising ID in your phone settings, and email us with any question: <code>' + esc(V.contact) + '</code>.');
+    return '<ol class="rules">' + r.map(function (x) { return '<li>' + x + '</li>'; }).join('') + '</ol>';
   }
 
   function render() {
     var g = S.game(current) || V.games[0];
+    var url = BASE + '#' + g.id;
     document.getElementById('picker').innerHTML = V.games.map(function (x) {
       return '<button type="button" data-id="' + x.id + '" aria-pressed="' + (x.id === g.id) + '"><img src="' + x.icon + '" alt="">' + esc(x.name) + '</button>';
     }).join('');
@@ -82,24 +99,21 @@
         '<section class="panel"><h3><span class="dot"></span>' + L(T.money) + '</h3>' +
           '<p><b>' + L(T.ads) + ' : </b>' + esc(L(g.ads)) + '</p>' +
           '<p><b>' + L(T.buy) + ' : </b>' + esc(g.purchases ? L(g.purchases) : L(T.noBuy)) + '</p></section>' +
-        '<section class="panel"><h3><span class="dot"></span>' + L(T.safety) + '</h3><dl class="kv">' +
+        '<section class="panel" style="grid-column:1/-1"><h3><span class="dot"></span>' + L(T.safety) + '</h3><dl class="kv kv-wide">' +
           '<dt>' + L(T.account) + '</dt><dd class="no">' + L(T.no) + '</dd>' +
           '<dt>' + L(T.collected) + '</dt><dd class="yes">' + L(T.byAds) + '</dd>' +
           '<dt>' + L(T.shared) + '</dt><dd>' + esc(sharedWith(g)) + '</dd>' +
           '<dt>' + L(T.sold) + '</dt><dd class="no">' + L(T.no) + '</dd>' +
           '<dt>' + L(T.enc) + '</dt><dd class="no">' + L(T.yes) + '</dd>' +
           '<dt>' + L(T.del) + '</dt><dd>' + L(T.uninstall) + '</dd>' +
-        '</dl><p style="margin-top:12px;color:var(--muted);font-size:15px">' + esc(L(T.collectedList)) + '</p></section>' +
-        '<section class="panel"><h3><span class="dot"></span>' + L(T.perms) + '</h3>' + g.permissions.map(function (p) {
-          return '<div class="perm"><b>' + esc(L(PERMS[p].n)) + '</b><span>' + esc(L(PERMS[p].d)) + '</span></div>'; }).join('') + '</section>' +
-        '<section class="panel" style="grid-column:1/-1"><h3><span class="dot"></span>' + L(T.privacy) + '</h3>' +
-          '<p>' + esc(L(T.local)) + '</p>' + (g.extra ? '<p>' + esc(L(g.extra)) + '</p>' : '') + '<p>' + esc(L(T.consent)) + '</p>' +
-          (g.age === '18+' ? '<p class="age">' + esc(S.L({ fr: 'Réservé aux adultes (18 ans et plus). À consommer avec modération.', en: 'Adults only (18+). Please drink responsibly.' })) + '</p>' : '') +
+        '</dl></section>' +
+        '<section class="panel" style="grid-column:1/-1" id="rules-' + g.id + '"><h3><span class="dot"></span>' + L(T.rules) + '</h3>' +
+          rules(g) +
+          '<p class="rules-url">' + L(T.officialPage) + ' <a href="privacy.html#' + g.id + '">' + esc(url) + '</a></p>' +
         '</section>' +
       '</div>' +
       '<div class="sheet-foot">' +
         (live ? '<a class="btn play big" href="' + S.playUrl(g) + '" target="_blank" rel="noopener">▶ ' + L(T.play) + '</a>' : '<span class="btn ghost big" aria-disabled="true">⏳ ' + L(T.soon) + '</span>') +
-        '<a class="btn ghost big" href="privacy.html#' + g.id + '">' + L(T.fullPolicy) + '</a>' +
       '</div>';
   }
 
