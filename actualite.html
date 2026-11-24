@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Actualité – Vectria</title>
+<meta name="description" content="Actualité du studio Vectria : sorties, mises à jour et jeux en cours de création.">
+<meta name="theme-color" content="#000000">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="news" data-title-fr="Actualité – Vectria" data-title-en="News – Vectria">
+
+<main class="wrap">
+  <div class="page-title">
+    <h1 data-fr="Actualité" data-en="News">Actualité</h1>
+    <p data-fr="Sorties, mises à jour et projets en cours : suis tout ce qui se passe chez Vectria." data-en="Releases, updates and work in progress: follow everything happening at Vectria.">Sorties, mises à jour et projets en cours : suis tout ce qui se passe chez Vectria.</p>
+  </div>
+
+  <section class="section">
+    <div class="section-head"><h2><span class="pulse-dot"></span><span data-fr="En cours de création" data-en="In the works">En cours de création</span></h2></div>
+    <div class="up-grid" id="upcoming"></div>
+  </section>
+
+
+  <section class="section">
+    <div class="section-head"><h2 data-fr="Toutes les actualités" data-en="All news">Toutes les actualités</h2></div>
+    <div class="news-list" id="news"></div>
+  </section>
+</main>
+
+<script src="data.js"></script>
+<script src="site.js"></script>
+<script>
+(function () {
+  var V = window.VECTRIA, S = window.Site;
+  Site.onLang(function () {
+    document.getElementById('upcoming').innerHTML = V.upcoming.map(function (u) {
+      return '<article class="panel up"><span class="badge-st">' + S.esc(S.L(u.progress)) + '</span><h3>' + S.esc(S.L(u.title)) + '</h3><p>' + S.esc(S.L(u.text)) + '</p></article>';
+    }).join('');
+    document.getElementById('news').innerHTML = V.news.map(function (n) {
+      var g = n.game && S.game(n.game);
+      return '<article class="news panel">' + (g ? '<img src="' + g.icon + '" alt="">' : '<div class="ph"><img src="logo-v.png" alt=""></div>') +
+        '<div><div class="when"><span class="tag-type">' + S.esc(S.newsType(n.type)) + '</span><span>' + S.esc(S.date(n.date)) + '</span></div>' +
+        '<h3>' + S.esc(S.L(n.title)) + '</h3><p>' + S.esc(S.L(n.text)) + '</p>' +
+        (g ? '<p style="margin-top:8px"><a href="jeux.html#' + g.id + '">' + (S.lang === 'fr' ? 'Fiche ' : '') + S.esc(g.name) + (S.lang === 'fr' ? '' : ' info') + ' →</a></p>' : '') +
+        '</div></article>';
+    }).join('');
+  });
+})();
+</script>
+</body>
+</html>

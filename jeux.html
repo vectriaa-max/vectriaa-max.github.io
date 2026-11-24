@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Fiches jeux – Vectria</title>
+<meta name="description" content="Fiche info de chaque jeu Vectria : description, publicités, sécurité des données et confidentialité.">
+<meta name="theme-color" content="#000000">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="games" data-title-fr="Fiches jeux – Vectria" data-title-en="Game info – Vectria">
+
+<main class="wrap">
+  <div class="page-title">
+    <h1 data-fr="Fiches info jeux" data-en="Game info sheets">Fiches info jeux</h1>
+    <p data-fr="Choisis un jeu : description, publicités, sécurité de tes données et confidentialité, tout est expliqué simplement." data-en="Pick a game: description, ads, data security and privacy, all explained simply.">Choisis un jeu : description, publicités, sécurité de tes données et confidentialité, tout est expliqué simplement.</p>
+  </div>
+
+  <div class="picker" id="picker" role="group" aria-label="Jeux / Games"></div>
+  <article class="panel" id="sheet" aria-live="polite"></article>
+</main>
+
+<script src="data.js"></script>
+<script src="site.js"></script>
+<script>
+(function () {
+  var V = window.VECTRIA, S = window.Site, L = S.L, esc = S.esc;
+  var T = {
+    status: { fr: 'Statut', en: 'Status' }, version: { fr: 'Version', en: 'Version' }, age: { fr: 'Âge', en: 'Age' }, langs: { fr: 'Langues', en: 'Languages' },
+    about: { fr: 'Le jeu', en: 'The game' }, money: { fr: 'Publicités & achats', en: 'Ads & purchases' },
+    safety: { fr: 'Sécurité des données', en: 'Data security' }, perms: { fr: 'Autorisations', en: 'Permissions' },
+    privacy: { fr: 'Confidentialité', en: 'Privacy' },
+    ads: { fr: 'Publicités', en: 'Ads' }, buy: { fr: 'Achats intégrés', en: 'In-app purchases' }, noBuy: { fr: 'Aucun achat intégré : le jeu est entièrement gratuit.', en: 'No in-app purchases: the game is completely free.' },
+    account: { fr: 'Compte à créer', en: 'Account required' }, collected: { fr: 'Données collectées', en: 'Data collected' },
+    shared: { fr: 'Partagées avec', en: 'Shared with' }, sold: { fr: 'Données vendues', en: 'Data sold' }, enc: { fr: 'Chiffrées en transit', en: 'Encrypted in transit' },
+    del: { fr: 'Suppression', en: 'Deletion' }, no: { fr: 'Non', en: 'No' }, yes: { fr: 'Oui', en: 'Yes' },
+    byAds: { fr: 'Par la pub', en: 'By ads' }, google: { fr: 'Google', en: 'Google' }, uninstall: { fr: 'Désinstaller le jeu', en: 'Uninstall the game' },
+    collectedList: { fr: 'Identifiant publicitaire, infos de l’appareil, localisation approximative (adresse IP) et diagnostics, collectés par Google AdMob pour afficher et mesurer les publicités.',
+                     en: 'Advertising ID, device info, approximate location (IP address) and diagnostics, collected by Google AdMob to show and measure ads.' },
+    local: { fr: 'Tes scores, ta progression et tes réglages restent sur ton téléphone. Vectria ne les reçoit jamais.', en: 'Your scores, progress and settings stay on your phone. Vectria never receives them.' },
+    consent: { fr: 'En Europe, le jeu te demande ton accord avant les pubs personnalisées. Tu peux changer d’avis dans les paramètres du jeu.', en: 'In Europe, the game asks for your consent before personalized ads. You can change your mind in the game settings.' },
+    fullPolicy: { fr: 'Politique de confidentialité complète', en: 'Full privacy policy' },
+    play: { fr: 'Google Play', en: 'Google Play' }, soon: { fr: 'Bientôt sur Google Play', en: 'Coming soon to Google Play' },
+    langsVal: { fr: 'FR · EN · ES · PT', en: 'FR · EN · ES · PT' },
+  };
+  var PERMS = {
+    internet: { n: { fr: 'Internet', en: 'Internet' }, d: { fr: 'Pour charger les publicités.', en: 'To load ads.' } },
+    vibrate: { n: { fr: 'Vibration', en: 'Vibration' }, d: { fr: 'Pour les vibrations du jeu (désactivables).', en: 'For in-game vibrations (can be turned off).' } },
+    adid: { n: { fr: 'Identifiant publicitaire', en: 'Advertising ID' }, d: { fr: 'Utilisé par AdMob, réinitialisable dans les réglages Android.', en: 'Used by AdMob, can be reset in Android settings.' } },
+    billing: { n: { fr: 'Achats Google Play', en: 'Google Play billing' }, d: { fr: 'Pour l’option premium, payée via Google Play.', en: 'For the premium option, paid through Google Play.' } },
+    games: { n: { fr: 'Google Play Jeux', en: 'Google Play Games' }, d: { fr: 'Pour le classement et les succès, si tu te connectes.', en: 'For the leaderboard and achievements, if you sign in.' } },
+  };
+  var current = null;
+
+  function sharedWith(g) {
+    var w = [S.L({ fr: 'Google (publicité)', en: 'Google (ads)' })];
+    if (g.permissions.indexOf('games') >= 0) w.push(S.L({ fr: 'Google Play Jeux', en: 'Google Play Games' }));
+    if (g.purchases) w.push(S.L({ fr: 'Google Play (paiement)', en: 'Google Play (payment)' }));
+    return w.join(', ');
+  }
+
+  function render() {
+    var g = S.game(current) || V.games[0];
+    document.getElementById('picker').innerHTML = V.games.map(function (x) {
+      return '<button type="button" data-id="' + x.id + '" aria-pressed="' + (x.id === g.id) + '"><img src="' + x.icon + '" alt="">' + esc(x.name) + '</button>';
+    }).join('');
+    var live = g.status === 'live';
+    document.getElementById('sheet').innerHTML =
+      '<div class="sheet-head"><img src="' + g.icon + '" alt="">' +
+        '<div><div class="meta"><span class="tag">' + esc(L(g.genre)) + '</span><span class="badge-st' + (live ? ' live' : '') + '">' + esc(S.statusLabel(g)) + '</span></div>' +
+        '<h2>' + esc(g.name) + '</h2><p>' + esc(L(g.short)) + '</p></div></div>' +
+      '<div class="facts">' +
+        '<div class="fact"><small>' + L(T.version) + '</small><b>' + esc(g.version) + '</b></div>' +
+        '<div class="fact"><small>' + L(T.age) + '</small><b' + (g.age === '18+' ? ' class="age"' : '') + '>' + esc(g.age) + '</b></div>' +
+        '<div class="fact"><small>' + L(T.langs) + '</small><b>' + L(T.langsVal) + '</b></div>' +
+        '<div class="fact"><small>' + L(T.buy) + '</small><b>' + (g.purchases ? L(T.yes) : L(T.no)) + '</b></div>' +
+      '</div>' +
+      '<div class="sheet-grid">' +
+        '<section class="panel"><h3><span class="dot"></span>' + L(T.about) + '</h3><ul>' + L(g.features).map(function (f) { return '<li>' + esc(f) + '</li>'; }).join('') + '</ul></section>' +
+        '<section class="panel"><h3><span class="dot"></span>' + L(T.money) + '</h3>' +
+          '<p><b>' + L(T.ads) + ' : </b>' + esc(L(g.ads)) + '</p>' +
+          '<p><b>' + L(T.buy) + ' : </b>' + esc(g.purchases ? L(g.purchases) : L(T.noBuy)) + '</p></section>' +
+        '<section class="panel"><h3><span class="dot"></span>' + L(T.safety) + '</h3><dl class="kv">' +
+          '<dt>' + L(T.account) + '</dt><dd class="no">' + L(T.no) + '</dd>' +
+          '<dt>' + L(T.collected) + '</dt><dd class="yes">' + L(T.byAds) + '</dd>' +
+          '<dt>' + L(T.shared) + '</dt><dd>' + esc(sharedWith(g)) + '</dd>' +
+          '<dt>' + L(T.sold) + '</dt><dd class="no">' + L(T.no) + '</dd>' +
+          '<dt>' + L(T.enc) + '</dt><dd class="no">' + L(T.yes) + '</dd>' +
+          '<dt>' + L(T.del) + '</dt><dd>' + L(T.uninstall) + '</dd>' +
+        '</dl><p style="margin-top:12px;color:var(--muted);font-size:15px">' + esc(L(T.collectedList)) + '</p></section>' +
+        '<section class="panel"><h3><span class="dot"></span>' + L(T.perms) + '</h3>' + g.permissions.map(function (p) {
+          return '<div class="perm"><b>' + esc(L(PERMS[p].n)) + '</b><span>' + esc(L(PERMS[p].d)) + '</span></div>'; }).join('') + '</section>' +
+        '<section class="panel" style="grid-column:1/-1"><h3><span class="dot"></span>' + L(T.privacy) + '</h3>' +
+          '<p>' + esc(L(T.local)) + '</p>' + (g.extra ? '<p>' + esc(L(g.extra)) + '</p>' : '') + '<p>' + esc(L(T.consent)) + '</p>' +
+          (g.age === '18+' ? '<p class="age">' + esc(S.L({ fr: 'Réservé aux adultes (18 ans et plus). À consommer avec modération.', en: 'Adults only (18+). Please drink responsibly.' })) + '</p>' : '') +
+        '</section>' +
+      '</div>' +
+      '<div class="sheet-foot">' +
+        (live ? '<a class="btn play big" href="' + S.playUrl(g) + '" target="_blank" rel="noopener">▶ ' + L(T.play) + '</a>' : '<span class="btn ghost big" aria-disabled="true">⏳ ' + L(T.soon) + '</span>') +
+        '<a class="btn ghost big" href="privacy.html#' + g.id + '">' + L(T.fullPolicy) + '</a>' +
+      '</div>';
+  }
+
+  document.getElementById('picker').addEventListener('click', function (e) {
+    var b = e.target.closest('button[data-id]'); if (!b) return;
+    current = b.getAttribute('data-id');
+    history.replaceState(null, '', '#' + current);
+    render();
+    document.getElementById('sheet').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
+  function fromHash() { var h = location.hash.slice(1); if (h === 'arrowly') h = 'fletchy'; current = S.game(h) ? h : V.games[0].id; }
+  window.addEventListener('hashchange', function () { fromHash(); render(); });
+  fromHash();
+  Site.onLang(render);
+})();
+</script>
+</body>
+</html>

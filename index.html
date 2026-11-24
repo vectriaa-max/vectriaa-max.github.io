@@ -12,103 +12,75 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="stylesheet" href="style.css">
 </head>
-<body>
-<div class="wrap">
-<header class="topbar">
-  <a class="brand" href="./"><img src="logo-v.png" alt=""><span>VECTRIA</span></a>
-  <div class="lang" role="group" aria-label="Langue / Language">
-    <button id="b-fr" aria-pressed="true">FR</button>
-    <button id="b-en" aria-pressed="false">EN</button>
-  </div>
-</header>
+<body data-page="home" data-title-fr="Vectria – Jeux mobiles" data-title-en="Vectria – Mobile games">
 
-<main>
-<section class="hero">
-  <img class="hero-logo" src="logo-vectria.jpg" width="800" height="800" alt="Logo Vectria – Gaming × Trading × Beyond">
-  <h1 data-fr="Des jeux mobiles simples, colorés et gratuits" data-en="Simple, colorful, free mobile games">Des jeux mobiles simples, colorés et gratuits</h1>
-  <p data-fr="Vectria est un studio indépendant qui crée des jeux pour Android. Tous nos jeux sont gratuits et financés par la publicité." data-en="Vectria is an independent studio making games for Android. All our games are free and supported by ads.">Vectria est un studio indépendant qui crée des jeux pour Android. Tous nos jeux sont gratuits et financés par la publicité.</p>
-</section>
-
-<h2 class="label" data-fr="Nos jeux" data-en="Our games">Nos jeux</h2>
-<div class="grid">
-  <article class="game" id="gemblox">
-    <img src="gemblox-icon.png" width="76" height="76" alt="Icône de Gemblox">
+<main class="wrap">
+  <section class="home-hero">
+    <img class="hero-logo" src="logo-vectria.jpg" width="800" height="800" alt="Logo Vectria – Gaming × Trading × Beyond">
     <div>
-      <span class="tag" data-fr="Puzzle de blocs" data-en="Block puzzle">Puzzle de blocs</span>
-      <h2>Gemblox</h2>
-      <p data-fr="Glisse les blocs sur la grille 8×8, complète les lignes et enchaîne les combos pour battre ton record. 30 fonds animés à débloquer." data-en="Drag blocks onto the 8×8 grid, clear lines and chain combos to beat your high score. 30 animated backgrounds to unlock.">Glisse les blocs sur la grille 8×8, complète les lignes et enchaîne les combos pour battre ton record. 30 fonds animés à débloquer.</p>
-      <div class="langs" title="Français · English · Español · Português">FR · EN · ES · PT</div>
-      <div class="links">
-        <a class="btn play" href="https://play.google.com/store/apps/details?id=com.vectria.gemblox" target="_blank" rel="noopener">▶ Google Play</a>
-        <a class="btn ghost" href="privacy.html#gemblox" data-fr="Confidentialité" data-en="Privacy">Confidentialité</a>
+      <h1><span data-fr="Des jeux simples, colorés et" data-en="Simple, colorful and">Des jeux simples, colorés et</span> <em data-fr="gratuits" data-en="free games">gratuits</em></h1>
+      <p data-fr="Vectria est un studio indépendant qui crée des jeux pour Android. Des parties courtes, sans compte à créer, et des pubs qui ne gâchent pas le jeu." data-en="Vectria is an independent studio making games for Android. Short sessions, no account to create, and ads that don't spoil the game.">Vectria est un studio indépendant qui crée des jeux pour Android. Des parties courtes, sans compte à créer, et des pubs qui ne gâchent pas le jeu.</p>
+      <div class="cta">
+        <a class="btn play big" href="jeux.html" data-fr="Découvrir nos jeux" data-en="Discover our games">Découvrir nos jeux</a>
+        <a class="btn ghost big" href="actualite.html" data-fr="Actualité" data-en="News">Actualité</a>
+      </div>
+      <div class="stats">
+        <div class="stat panel"><b id="st-games">4</b><span data-fr="jeux" data-en="games">jeux</span></div>
+        <div class="stat panel"><b>4</b><span data-fr="langues" data-en="languages">langues</span></div>
+        <div class="stat panel"><b>0 €</b><span data-fr="pour jouer" data-en="to play">pour jouer</span></div>
       </div>
     </div>
-  </article>
+  </section>
 
-  <article class="game" id="tournee-generale">
-    <img src="tournee-generale-icon.png" width="76" height="76" alt="Icône de Tournée Générale">
-    <div>
-      <span class="tag"><span data-fr="Jeu de soirée" data-en="Party game">Jeu de soirée</span> · <span class="age">18+</span></span>
-      <h2>Tournée Générale</h2>
-      <p data-fr="Le jeu de cartes pour animer vos soirées entre amis : défis, votes et fous rires. À consommer avec modération." data-en="The card game to liven up your nights with friends: challenges, votes and laughs. Please drink responsibly.">Le jeu de cartes pour animer vos soirées entre amis : défis, votes et fous rires. À consommer avec modération.</p>
-      <div class="langs" title="Français · English · Español · Português">FR · EN · ES · PT</div>
-      <div class="links">
-        <a class="btn play" href="https://play.google.com/store/apps/details?id=fr.tourneegenerale.app" target="_blank" rel="noopener">▶ Google Play</a>
-        <a class="btn ghost" href="privacy.html#tournee-generale" data-fr="Confidentialité" data-en="Privacy">Confidentialité</a>
-      </div>
+  <section class="section">
+    <div class="section-head">
+      <h2 data-fr="Nos jeux" data-en="Our games">Nos jeux</h2>
+      <a href="jeux.html" data-fr="Toutes les fiches info →" data-en="All game info →">Toutes les fiches info →</a>
     </div>
-  </article>
+    <div class="grid" id="home-games"></div>
+  </section>
 
-  <article class="game" id="fletchy">
-    <img src="fletchy-icon.png" width="76" height="76" alt="Icône de Fletchy">
-    <div>
-      <span class="tag" data-fr="Puzzle de réflexion" data-en="Logic puzzle">Puzzle de réflexion</span>
-      <h2>Fletchy</h2>
-      <p data-fr="Touche une flèche : elle sort si rien ne bloque son chemin. Trouve le bon ordre pour vider le plateau, jusqu'au mode Méga hard." data-en="Tap an arrow: it slides out if nothing blocks its path. Find the right order to clear the board, all the way to Mega hard mode.">Touche une flèche : elle sort si rien ne bloque son chemin. Trouve le bon ordre pour vider le plateau, jusqu'au mode Méga hard.</p>
-      <div class="langs" title="Français · English · Español · Português">FR · EN · ES · PT</div>
-      <div class="links">
-        <a class="btn play" href="https://play.google.com/store/apps/details?id=com.vectria.arrowly" target="_blank" rel="noopener">▶ Google Play</a>
-        <a class="btn ghost" href="privacy.html#fletchy" data-fr="Confidentialité" data-en="Privacy">Confidentialité</a>
-      </div>
-    </div>
-  </article>
 
-  <article class="game" id="neon-drift">
-    <img src="neon-drift-icon.png" width="76" height="76" alt="Icône de Neon Drift">
-    <div>
-      <span class="tag">Arcade</span>
-      <h2>Neon Drift</h2>
-      <p data-fr="Pilote ton vaisseau dans un univers néon, évite les obstacles, ramasse des pièces et relève les défis du jour." data-en="Fly your ship through a neon world, dodge obstacles, collect coins and complete daily challenges.">Pilote ton vaisseau dans un univers néon, évite les obstacles, ramasse des pièces et relève les défis du jour.</p>
-      <div class="langs" title="Français · English · Español · Português">FR · EN · ES · PT</div>
-      <div class="links">
-        <a class="btn play" href="https://play.google.com/store/apps/details?id=com.vectria.neondrift" target="_blank" rel="noopener">▶ Google Play</a>
-        <a class="btn ghost" href="privacy.html#neon-drift" data-fr="Confidentialité" data-en="Privacy">Confidentialité</a>
-      </div>
+  <section class="section">
+    <div class="section-head">
+      <h2 data-fr="Dernières actualités" data-en="Latest news">Dernières actualités</h2>
+      <a href="actualite.html" data-fr="Toute l'actualité →" data-en="All news →">Toute l'actualité →</a>
     </div>
-  </article>
-</div>
+    <div class="news-list" id="home-news"></div>
+  </section>
+
+  <section class="section panel about compact">
+    <img src="logo-v.png" width="96" height="96" alt="" style="width:96px">
+    <div>
+      <h2 style="font:900 20px var(--display);letter-spacing:.05em;margin:0 0 8px" data-fr="Qui sommes-nous ?" data-en="Who are we?">Qui sommes-nous ?</h2>
+      <p style="color:var(--muted);margin:0 0 12px" data-fr="Un studio indépendant passionné de jeux mobiles, qui teste chaque jeu avec de vrais joueurs avant sa sortie." data-en="An independent studio passionate about mobile games, testing every game with real players before release.">Un studio indépendant passionné de jeux mobiles, qui teste chaque jeu avec de vrais joueurs avant sa sortie.</p>
+      <div class="cta" style="justify-content:flex-start"><a class="btn ghost" href="entreprise.html" data-fr="Découvrir le studio" data-en="About the studio">Découvrir le studio</a><a class="btn ghost" href="reseaux.html" data-fr="Nos réseaux" data-en="Our social networks">Nos réseaux</a></div>
+    </div>
+  </section>
 </main>
 
-<footer>
-  <span>© 2026 Vectria</span>
-  <a href="privacy.html" data-fr="Politique de confidentialité" data-en="Privacy policy">Politique de confidentialité</a>
-  <span><span data-fr="Contact :" data-en="Contact:">Contact :</span> <code>vectriaa@gmail.com</code></span>
-</footer>
-</div>
-
+<script src="data.js"></script>
+<script src="site.js"></script>
 <script>
 (function () {
-  var bFr = document.getElementById('b-fr'), bEn = document.getElementById('b-en');
-  function show(l) {
-    document.documentElement.lang = l;
-    document.querySelectorAll('[data-' + l + ']').forEach(function (el) { el.textContent = el.getAttribute('data-' + l); });
-    bFr.setAttribute('aria-pressed', l === 'fr'); bEn.setAttribute('aria-pressed', l === 'en');
-    try { localStorage.setItem('vectria_lang', l); } catch (e) {}
-  }
-  bFr.addEventListener('click', function () { show('fr'); });
-  bEn.addEventListener('click', function () { show('en'); });
-  var saved = null; try { saved = localStorage.getItem('vectria_lang'); } catch (e) {}
-  show(saved || ((navigator.language || 'fr').toLowerCase().indexOf('fr') === 0 ? 'fr' : 'en'));
+  var V = window.VECTRIA, S = window.Site;
+  Site.onLang(function () {
+    document.getElementById('st-games').textContent = V.games.length;
+    document.getElementById('home-games').innerHTML = V.games.map(function (g) {
+      return '<a class="game" href="jeux.html#' + g.id + '">' +
+        '<img src="' + g.icon + '" width="76" height="76" alt="">' +
+        '<div><div class="meta"><span class="tag">' + S.esc(S.L(g.genre)) + (g.age === '18+' ? ' · <span class="age">18+</span>' : '') + '</span>' +
+        '<span class="badge-st' + (g.status === 'live' ? ' live' : '') + '">' + S.esc(S.statusLabel(g)) + '</span></div>' +
+        '<h2>' + S.esc(g.name) + '</h2><p>' + S.esc(S.L(g.short)) + '</p>' +
+        '<span class="btn ghost">' + (S.lang === 'fr' ? 'Voir la fiche' : 'View info') + ' →</span></div></a>';
+    }).join('');
+    document.getElementById('home-news').innerHTML = V.news.slice(0, 2).map(function (n) {
+      var g = n.game && S.game(n.game);
+      return '<article class="news panel">' + (g ? '<img src="' + g.icon + '" alt="">' : '<div class="ph"><img src="logo-v.png" alt=""></div>') +
+        '<div><div class="when"><span class="tag-type">' + S.esc(S.newsType(n.type)) + '</span><span>' + S.esc(S.date(n.date)) + '</span></div>' +
+        '<h3>' + S.esc(S.L(n.title)) + '</h3><p>' + S.esc(S.L(n.text)) + '</p></div></article>';
+    }).join('');
+  });
 })();
 </script>
 </body>

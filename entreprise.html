@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Entreprise – Vectria</title>
+<meta name="description" content="Vectria, studio indépendant de jeux mobiles : notre histoire, nos valeurs et comment nous contacter.">
+<meta name="theme-color" content="#000000">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="studio" data-title-fr="Entreprise – Vectria" data-title-en="Company – Vectria">
+
+<main class="wrap">
+  <div class="page-title">
+    <h1 data-fr="L'entreprise" data-en="The company">L'entreprise</h1>
+    <p data-fr="Qui se cache derrière Vectria, ce qui nous guide et où nous allons." data-en="Who is behind Vectria, what guides us and where we are heading.">Qui se cache derrière Vectria, ce qui nous guide et où nous allons.</p>
+  </div>
+
+  <section class="section panel about">
+    <img src="logo-vectria.jpg" width="800" height="800" alt="Logo Vectria">
+    <div>
+      <h2 style="font:900 22px var(--display);letter-spacing:.04em;margin:0 0 12px" data-fr="Un studio indépendant" data-en="An independent studio">Un studio indépendant</h2>
+      <div data-l="fr">
+        <p>Vectria est un studio indépendant français qui crée des jeux mobiles pour Android. Nos jeux se prennent en main en quelques secondes : un puzzle de blocs, un casse-tête de flèches, un jeu d'arcade et un jeu de soirée entre amis.</p>
+        <p>Chaque jeu est d'abord testé par de vrais joueurs pendant plusieurs semaines. Leurs retours nous aident à corriger, à équilibrer et à ajouter ce qu'ils demandent avant la sortie.</p>
+        <p>Notre logo résume notre ambition : <b>Gaming × Trading × Beyond</b>. Le jeu vidéo est notre point de départ, pas notre limite.</p>
+      </div>
+      <div data-l="en" hidden>
+        <p>Vectria is an independent French studio making mobile games for Android. Our games take seconds to learn: a block puzzle, an arrow puzzle, an arcade game and a party game for friends.</p>
+        <p>Every game is first tested by real players for several weeks. Their feedback helps us fix, balance and add what they ask for before release.</p>
+        <p>Our logo sums up our ambition: <b>Gaming × Trading × Beyond</b>. Video games are where we start, not where we stop.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><h2 data-fr="Nos valeurs" data-en="Our values">Nos valeurs</h2></div>
+    <div class="values">
+      <article class="panel value"><div class="ico">01</div>
+        <h3 data-fr="Gratuit et accessible" data-en="Free and accessible">Gratuit et accessible</h3>
+        <p data-fr="Tous nos jeux sont gratuits, en 4 langues, et jouables sans compte. Les vidéos publicitaires sont toujours facultatives." data-en="All our games are free, in 4 languages and playable without an account. Video ads are always optional.">Tous nos jeux sont gratuits, en 4 langues, et jouables sans compte. Les vidéos publicitaires sont toujours facultatives.</p></article>
+      <article class="panel value"><div class="ico">02</div>
+        <h3 data-fr="Respect des joueurs" data-en="Respect for players">Respect des joueurs</h3>
+        <p data-fr="Tes scores restent sur ton téléphone. Nous ne vendons aucune donnée et nous expliquons clairement ce que fait chaque jeu." data-en="Your scores stay on your phone. We sell no data and clearly explain what each game does.">Tes scores restent sur ton téléphone. Nous ne vendons aucune donnée et nous expliquons clairement ce que fait chaque jeu.</p></article>
+      <article class="panel value"><div class="ico">03</div>
+        <h3 data-fr="Testé par la communauté" data-en="Tested by the community">Testé par la communauté</h3>
+        <p data-fr="Avant chaque sortie, nos testeurs jouent, signalent les bugs et proposent des idées. Bientôt, tu pourras toi aussi devenir testeur." data-en="Before each release, our testers play, report bugs and suggest ideas. Soon, you will be able to become a tester too.">Avant chaque sortie, nos testeurs jouent, signalent les bugs et proposent des idées. Bientôt, tu pourras toi aussi devenir testeur.</p></article>
+    </div>
+  </section>
+
+
+  <section class="section panel">
+    <div class="section-head"><h2 data-fr="Nous contacter" data-en="Contact us">Nous contacter</h2></div>
+    <p data-fr="Une question, un bug, une idée de jeu ou une demande sur tes données ? Écris-nous :" data-en="A question, a bug, a game idea or a request about your data? Write to us:">Une question, un bug, une idée de jeu ou une demande sur tes données ? Écris-nous :</p>
+    <p style="font-size:18px"><code id="mail"></code></p>
+    <div class="cta"><a class="btn ghost" href="reseaux.html" data-fr="Nos réseaux sociaux" data-en="Our social networks">Nos réseaux sociaux</a><a class="btn ghost" href="privacy.html" data-fr="Politique de confidentialité" data-en="Privacy policy">Politique de confidentialité</a></div>
+  </section>
+</main>
+
+<script src="data.js"></script>
+<script src="site.js"></script>
+<script>document.getElementById('mail').textContent = window.VECTRIA.contact;</script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Réseaux sociaux – Vectria</title>
+<meta name="description" content="Retrouve Vectria sur les réseaux sociaux.">
+<meta name="theme-color" content="#000000">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="social" data-title-fr="Réseaux sociaux – Vectria" data-title-en="Social networks – Vectria">
+
+<main class="wrap">
+  <div class="page-title">
+    <h1 data-fr="Réseaux sociaux" data-en="Social networks">Réseaux sociaux</h1>
+    <p data-fr="Coulisses, nouveaux jeux, mises à jour et concours : suis Vectria là où tu es." data-en="Behind the scenes, new games, updates and contests: follow Vectria wherever you are.">Coulisses, nouveaux jeux, mises à jour et concours : suis Vectria là où tu es.</p>
+  </div>
+  <div class="social-grid" id="social"></div>
+  <p style="text-align:center;color:var(--muted)"><span data-fr="Tu peux aussi nous écrire :" data-en="You can also email us:">Tu peux aussi nous écrire :</span> <code id="mail"></code></p>
+</main>
+
+<script src="data.js"></script>
+<script src="site.js"></script>
+<script>
+(function () {
+  var V = window.VECTRIA, S = window.Site;
+  // generic icons (not brand logos)
+  var ICON = {
+    note: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 3v10.2a3.8 3.8 0 1 1-2-3.3V6h-4V3h6z"/></svg>',
+    camera: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 5 10 3h4l1.5 2H19a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h3.5zM12 17a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9zm0-2a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>',
+    play: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5L8 5.5z"/></svg>',
+    chat: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1H9l-5 4v-4H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1zm4 6.5a1.5 1.5 0 1 0 0 .01zm4 0a1.5 1.5 0 1 0 0 .01zm4 0a1.5 1.5 0 1 0 0 .01z"/></svg>',
+  };
+  var NETS = [
+    { key: 'tiktok', name: 'TikTok', icon: 'note', bg: 'linear-gradient(135deg,#3d8bff,#e04dff)', d: { fr: 'Vidéos courtes des jeux et coulisses', en: 'Short game videos and behind the scenes' } },
+    { key: 'instagram', name: 'Instagram', icon: 'camera', bg: 'linear-gradient(135deg,#e04dff,#ff8a3d)', d: { fr: 'Images, annonces et stories', en: 'Pictures, announcements and stories' } },
+    { key: 'youtube', name: 'YouTube', icon: 'play', bg: 'linear-gradient(135deg,#ff4d6d,#8b5cff)', d: { fr: 'Bandes-annonces et vidéos de gameplay', en: 'Trailers and gameplay videos' } },
+    { key: 'discord', name: 'Discord', icon: 'chat', bg: 'linear-gradient(135deg,#5b6cff,#22d3ee)', d: { fr: 'Discute avec l’équipe et les autres joueurs', en: 'Chat with the team and other players' } },
+  ];
+  document.getElementById('mail').textContent = V.contact;
+  Site.onLang(function () {
+    document.getElementById('social').innerHTML = NETS.map(function (n) {
+      var url = V.social[n.key];
+      var inner = '<span class="logo" style="background:' + n.bg + '">' + ICON[n.icon] + '</span>' +
+        '<span><h3>' + n.name + '</h3><p>' + S.esc(S.L(n.d)) + '</p></span>' +
+        (url ? '<span class="btn play">' + (S.lang === 'fr' ? 'Suivre' : 'Follow') + ' →</span>' : '<span class="soon">' + (S.lang === 'fr' ? 'Bientôt' : 'Coming soon') + '</span>');
+      return url ? '<a class="panel soc" href="' + S.esc(url) + '" target="_blank" rel="noopener">' + inner + '</a>' : '<div class="panel soc off">' + inner + '</div>';
+    }).join('');
+  });
+})();
+</script>
+</body>
+</html>
